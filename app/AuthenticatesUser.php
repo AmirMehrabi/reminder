@@ -35,7 +35,7 @@ class AuthenticatesUser
   protected function createToken(){
     $user = User::byEmail($this->request->email);
 
-    LoginToken::generateFor($user); 
+    LoginToken::generateFor($user);
 
   }
 
