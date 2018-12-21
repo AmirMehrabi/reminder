@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\AuthenticatesUser;
 use App\Http\Controllers\Controller;
+use App\LoginToken;
 
 class LoginController extends Controller
 {
@@ -17,5 +18,10 @@ class LoginController extends Controller
 
     return 'Sweet - go check that email, yo!';
 
+  }
+
+  public function authenticate(LoginToken $token)
+  {
+    dd($token);
   }
 }

@@ -13,18 +13,21 @@ class AuthenticatesUser
   protected $request;
 
 
-  public function __construct(Request $request){
+  public function __construct(Request $request)
+  {
     $this->request = $request;
   }
 
 
-  public function invite(){
+  public function invite()
+  {
     $this->validateRequest()
-   ->createToken();
-//    ->send();
+   ->createToken()
+   ->send();
   }
 
-  protected function validateRequest(){
+  protected function validateRequest()
+  {
     $this->validate($this->request, [
       'email' => 'required|email|exists:users'
     ]);
@@ -32,11 +35,11 @@ class AuthenticatesUser
     return $this;
   }
 
-  protected function createToken(){
+  protected function createToken()
+  {
     $user = User::byEmail($this->request->email);
 
-    LoginToken::generateFor($user);
-
+    return LoginToken::generateFor($user);
   }
 
 }
