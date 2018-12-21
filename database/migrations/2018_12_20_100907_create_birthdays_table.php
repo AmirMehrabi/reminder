@@ -17,7 +17,7 @@ class CreateBirthdaysTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->text('name');
-            $table->text('relation');
+            $table->text('relation')->nullable();
             $table->dateTime('birthday_date');
             $table->timestamps();
         });
