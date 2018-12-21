@@ -8,13 +8,19 @@ use App\LoginToken;
 
 class LoginController extends Controller
 {
+
+  public function __construct(AuthenticatesUser $auth)
+  {
+    $this->auth = $auth;
+  }
+
   public function login(){
     return view('auth.login');
   }
 
-  public function postLogin(AuthenticatesUser $auth){
+  public function postLogin(){
 
-    $auth->invite();
+    $this->auth->invite();
 
     return 'Sweet - go check that email, yo!';
 
@@ -22,6 +28,8 @@ class LoginController extends Controller
 
   public function authenticate(LoginToken $token)
   {
-    dd($token);
+    $this->auth->login($token);
+
+    return 'You are now signed in' . auth()->user()->name;
   }
 }
