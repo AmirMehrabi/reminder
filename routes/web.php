@@ -12,11 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 //Route::auth();
 
 Route::get('login', 'Auth\LoginController@login');
 Route::post('login', 'Auth\LoginController@postLogin');
+Route::get('logout', 'Auth\LoginController@logout');
 Route::get('auth/token/{token}', 'Auth\LoginController@authenticate');
+
+Route::get('dashboard', function()
+{
+  return 'Welcome to our site, ' . Auth::user()->name;
+});

@@ -32,4 +32,11 @@ class LoginController extends Controller
 
     return 'You are now signed in' . auth()->user()->name;
   }
+
+  public function logout()
+  {
+    Auth::logout();
+
+    return redirect('/');
+  }
 }
