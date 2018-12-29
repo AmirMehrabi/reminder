@@ -30,10 +30,10 @@
 
 @font-face {
   font-family: Sahel;
-  src: url('Sahel/Sahel.eot');
-  src: url('Sahel/Sahel.eot?#iefix') format('embedded-opentype'),
-       url('Sahel/Sahel.woff') format('woff'),
-       url('Sahel/Sahel.ttf') format('truetype');
+  src: url('Sahel/Farsi-Digits-Without-Latin/Sahel-FD-WOL.eot');
+  src: url('Sahel/Farsi-Digits-Without-Latin/Sahel-FD-WOL.eot?#iefix') format('embedded-opentype'),
+       url('Sahel/Farsi-Digits-Without-Latin/Sahel-FD-WOL.woff') format('woff'),
+       url('Sahel/Farsi-Digits-Without-Latin/Sahel-FD-WOL.ttf') format('truetype');
   font-weight: normal;
 }
 

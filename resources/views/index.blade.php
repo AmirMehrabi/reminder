@@ -33,10 +33,10 @@
               پروفایل من
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">پروفایل من</a>
+              <a class="dropdown-item" href="#">تنظیمات</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">خروج</a>
             </div>
           </li>
         </ul>
@@ -44,10 +44,10 @@
 
 
           <li class="nav-item">
-            <p class="nav-link disabled mb-0 pl-3"><i class="far fa-calendar-alt"></i> چهارشنبه ۵ دی</p>
+            <p class="nav-link disabled mb-0 pl-3"><i class="far fa-calendar-alt"></i> {{$today_date}}</p>
           </li>
           <li class="nav-item">
-            <p class="nav-link disabled mb-0"><i class="far fa-clock"></i> ۰۹:۳۱ ب.ظ</p>
+            <p class="nav-link disabled mb-0"><i class="far fa-clock"></i> {{$today_time}}</p>
           </li>
         </ul>
 
@@ -60,70 +60,57 @@
         <div class="row   justify-content-md-center">
           <div class="col col-md-5 text-center">
             <div class="calc-form">
+              @if (session()->has('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  تولد مورد نظر شما با موفقت به پروفایلتان افزوده شد.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
+
               <h1 class="h3 mb-3 font-weight-normal">دیگر تاریخ تولدها را فراموش نکنید</h1>
+              {!! Form::open(['route' => 'birthday.store']) !!}
               <div class="input-group input-group-lg ltr pt-4">
-                <input type="text" class="form-control no-border rtl main-input" id="finalPrice" placeholder="نام و نام خانوادگی متولد">
+                <input type="text" class="form-control no-border rtl main-input" name="name" placeholder="نام و نام خانوادگی متولد">
               </div>
               <div class="input-group input-group-lg ltr pt-4">
-                <input type="text" class="form-control no-border ltr main-input" id="finalPrice" placeholder="۱۳۷۴ / ۰۶ / ۱۸">
+                <input type="date" class="form-control no-border ltr main-input" name="birthDate" placeholder="۱۳۷۴ / ۰۶ / ۱۸">
               </div>
               <div class="input-group input-group-lg ltr pt-4">
-                <button class="btn btn-lg btn-warning uneditable-input btn-block r-1"  id="calculate" type="button">ذخیره</button>
+                {!! Form::submit('ذخیره', ['class' => 'btn btn-lg btn-warning uneditable-input btn-block r-1']); !!}
               </div>
             </div>
-            <div class="calculated-price mt-4 " id="calculated-price">
-
-            </div>
+            {!! Form::close() !!}
           </div>
         </div>
       </div>
     </section>
+    @if (count($birthdays))
+      <section class="birthdays">
+        <div class="container">
+          <div class="row text-center">
+            @foreach ($birthdays as $birthday)
+              <div class="col-md-4">
+                <div class="c100 p{{$birthday->percent }} big green">
+                    <span>{{$birthday->countdays($birthday->birthday_date)}} روز</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                </div>
+                <p class="h4 pt-3">{{$birthday->name}}</p>
+                <p class="h6 text-muted">تاریخ تولد:  {{jdate(\Carbon\Carbon::parse($birthday->birthday_date))->format('Y/m/d')}}</p>
+              </div>
+            @endforeach
 
-    <section class="birthdays">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-4">
-            <div class="c100 p10 big green">
-                <span>۳۳۰ روز</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-            <div class="clearfix">
-            </div>
-            <p class="h4 pt-3">م. اسماعیل خانی</p>
-            <p class="h6 text-muted">تاریخ تولد: ۱۳۷۰/۰۱/۰۱</p>
-          </div>
-          <div class="col-md-4">
-            <div class="c100 p50 big green">
-                <span>۲۵۰ روز</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-            <div class="clearfix">
-            </div>
-            <p class="h4 pt-3">حمیدرضا پورخوش‌سفر</p>
-            <p class="h6 text-muted">تاریخ تولد: ۱۳۷۳/۰۱/۰۱</p>
-          </div>
-          <div class="col-md-4">
-            <div class="c100 p60 big green">
-                <span>۱۲۰ روز</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-            <div class="clearfix">
-            </div>
-            <p class="h4 pt-3">امیرمسعود مهرابیان</p>
-            <p class="h6 text-muted">تاریخ تولد: ۱۳۷۴/۰۶/۱۸</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    @endif
+
 
 
 

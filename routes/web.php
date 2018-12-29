@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'PagesController@index');
+
+Route::resource('birthday', 'BirthdayController')->names([
+    'store' => 'birthday.store'
+]);
 
 //Route::auth();
 

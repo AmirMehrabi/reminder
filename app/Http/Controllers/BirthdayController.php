@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Birthday;
+use Carbon\Carbon;
+use Redirect;
 
 class BirthdayController extends Controller
 {
@@ -34,7 +37,14 @@ class BirthdayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $birthday =  new Birthday;
+        $birthday->user_id = 1;
+        $birthday->name = $request->input('name');
+        $birthday->birthday_date = $request->input('birthDate');
+
+        $birthday->save();
+        $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
+        return Redirect::back();
     }
 
     /**
