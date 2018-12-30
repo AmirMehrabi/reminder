@@ -37,6 +37,10 @@ class BirthdayController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+          'name' => 'required',
+          'birthday_date' => 'required',
+      ]);
         $birthday =  new Birthday;
         $birthday->user_id = 1;
         $birthday->name = $request->input('name');
