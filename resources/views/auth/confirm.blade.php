@@ -6,20 +6,20 @@
         <div class="col-md-5  mt-5 pt-5">
           <div class="card" style="">
             <div class="card-body">
-              <h5 class="card-title h4">ورود به وب‌سایت</h5>
+              <h5 class="card-title h4">احراز هویت</h5>
               <hr>
-              <form class="form-horizontal text-right" method="POST">
+                  {{Form::open(array('url'=>'auth/token/', 'method' => 'post'))}}
+
                   {{ csrf_field() }}
 
-                <fieldset class="form-group">
-                  <label for="email">آدرس ایمیل</label>
-                  <input type="email" name="email" class="form-control" id="email" placeholder="برای مثال: amir@gmail.com">
-                  @if ($errors->has('email'))
+                <fieldset class="form-group text-right">
+                  <label for="token">تا لحظاتی دیگر یک کد تائید برای شما ایمیل خواهد شد. آن را در فیلد زیر وارد کنید.</label>
+                  <input type="token" name="token" class="form-control" id="token" placeholder="برای مثال: 7SaPL">
+                  @if ($errors->has('token'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('email') }}</strong> <br />
+                          <strong>{{ $errors->first('token') }}</strong> <br />
                       </span>
                   @endif
-                  <small class="text-muted">ایمیل شما را با هیچکس به اشتراک نخواهیم گذاشت.</small>
                 </fieldset>
 
                 <button type="submit" class="btn btn-primary float-left">

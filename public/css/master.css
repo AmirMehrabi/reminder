@@ -89,10 +89,37 @@ input[type="color"]:focus,
   background: #f3f3f3;
 }
 
+
+.profile-intro {
+  padding-bottom: 60px;
+  background: url('img/prof-bg.png');
+}
+
+.profile-header {
+
+  background:linear-gradient(0deg,rgba(252, 238, 90,0.5),rgba(255, 193, 7,0.6)),url(img/bg-prof.png);
+background-size:cover;
+  padding-bottom: 60px;
+  min-height: 250px;
+}
+
 .birthdays {
   padding-top: 60px;
   padding-bottom: 60px;
   background: #fff;
+}
+
+.img-prof-avatar {
+  max-width: 130px;
+max-height: 130px;
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+bottom: -300px;
+border: 3px solid #FCEE5A;
+border-radius: 100px;
 }
 
 
@@ -116,6 +143,16 @@ input[type="color"]:focus,
   z-index: 998;
 }
 
+.modal-content {
+  border: 0;
+  border-radius: 2px;
+}
+
+
 .dropdown-item {
   text-align: right;
+}
+
+.profile-section {
+  padding-top: 100px;
 }

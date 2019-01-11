@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Birthday;
 use Carbon\Carbon;
 use Redirect;
+use App\Birthday;
 
 class BirthdayController extends Controller
 {
@@ -44,7 +44,7 @@ class BirthdayController extends Controller
         $birthday =  new Birthday;
         $birthday->user_id = 1;
         $birthday->name = $request->input('name');
-        $birthday->birthday_date = $request->input('birthDate');
+        $birthday->birthday_date = $request->input('birthday_date');
 
         $birthday->save();
         $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
@@ -82,7 +82,18 @@ class BirthdayController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+          'name' => 'required',
+          'birthday_date' => 'required',
+      ]);
+        $birthday = Birthday::where('id', $id)->firstOrFail();
+        $birthday->user_id = 1;
+        $birthday->name = $request->input('name');
+        $birthday->birthday_date = $request->input('birthday_date');
+
+        $birthday->save();
+        $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
+        return Redirect::back();
     }
 
     /**
@@ -91,8 +102,10 @@ class BirthdayController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        Birthday::findOrFail($id)->delete();
+        $request->session()->flash('status', 'تولد مورد نظر شما با موفقیت حذف شد');
+        return Redirect::back();
     }
 }

@@ -25,20 +25,39 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto pr-0">
-          <div class="inset">
-            <img src="https://ctvalleybrewing.com/wp-content/uploads/2017/04/avatar-placeholder.png">
-          </div>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              پروفایل من
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">پروفایل من</a>
-              <a class="dropdown-item" href="#">تنظیمات</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">خروج</a>
+
+          @if (Auth::user())
+            <div class="inset">
+              <img src="https://ctvalleybrewing.com/wp-content/uploads/2017/04/avatar-placeholder.png">
             </div>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                پروفایل من
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{route('profile')}}">پروفایل من</a>
+                <a class="dropdown-item" href="#">تنظیمات</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{url('logout')}}">خروج</a>
+              </div>
+            </li>
+            @else
+              @if (Request::is('/'))
+
+                <li class="nav-item">
+                  <a class=" nav-link" href="{{url('login')}}">ورود</a>
+                </li>
+                @else
+                  <li class="nav-item">
+                    <a class=" nav-link ml-2" href="{{url('/')}}">صفحهٔ نخست</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class=" nav-link" href="{{url('login')}}">ورود</a>
+                  </li>
+              @endif
+
+          @endif
+
         </ul>
         <ul class="navbar-nav mr-auto">
 
