@@ -36,7 +36,7 @@ class AuthenticatesUser
   protected function validateRequest()
   {
     $this->validate($this->request, [
-      'phone' => 'required'
+      'phone' => 'required|phone:IR'
     ]);
 
     return $this;

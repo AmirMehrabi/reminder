@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('home');
 Route::get('/logout', 'AuthController@logout');
 Route::get('profile', 'PagesController@profile')->name('profile');
 
@@ -31,8 +31,8 @@ route::get('sms', 'PagesController@sms');
 
 //Route::auth();
 
-Route::get('login', 'Auth\LoginController@login');
-Route::post('login', 'Auth\LoginController@postLogin')->name('login');
+Route::get('login', 'Auth\LoginController@login')->name('user.login');
+Route::post('login/confirm', 'Auth\LoginController@postLogin')->name('login');
 Route::get('logout', 'Auth\LoginController@logout');
 Route::get('auth/token/{token}', 'Auth\LoginController@authenticate');
 Route::post('auth/token/', 'Auth\LoginController@authenticate');

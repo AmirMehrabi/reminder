@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Redirect;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,6 +49,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+      if ($exception instanceof \Kavenegar\Exceptions\ApiException) {
+          return back()->withErrors(['error' => $exception->getMessage()]);
+      }
+      if ($exception instanceof \Kavenegar\Exceptions\HttpException) {
+          return back()->withErrors(['error' => $exception->getMessage()]);
+      }
         return parent::render($request, $exception);
     }
 }

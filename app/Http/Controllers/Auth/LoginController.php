@@ -6,6 +6,7 @@ use App\AuthenticatesUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\LoginToken;
+use Redirect;
 use Auth;
 
 class LoginController extends Controller
@@ -24,21 +25,25 @@ class LoginController extends Controller
   }
 
   public function postLogin(){
-
     $this->auth->invite();
     $today_date = jdate()->format('%d %B %Y');
     $today_time = jdate()->format('H:i');
-    $token = '';
-    return view('auth.confirm', compact('today_time', 'today_date', 'token'));
+    return view('auth.confirm', compact('today_time', 'today_date'));
 
   }
 
   public function authenticate(Request $request)
   {
-    $token = LoginToken::where('token', $request->input('token'))->firstOrFail();
-    $this->auth->login($token);
+    $token = LoginToken::where('token', $request->input('token'))->first();
+    if ($token) {
+      $this->auth->login($token);
 
-    return redirect('/');
+      return redirect('/');
+    }
+    else {
+      return Redirect::back()->withErrors(array('error' =>'کد وارد شده صحیح نمی‌باشد'));
+    }
+
   }
 
   public function logout()

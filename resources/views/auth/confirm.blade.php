@@ -4,6 +4,15 @@
 <div class="container">
     <div class="row row justify-content-md-center">
         <div class="col-md-5  mt-5 pt-5">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <div class="card" style="">
             <div class="card-body">
               <h5 class="card-title h4">احراز هویت</h5>
@@ -25,6 +34,7 @@
                 <button type="submit" class="btn btn-primary float-left">
                     ورود
                 </button>
+                <a href="{{route('user.login')}}" class="btn btn-default float-left ml-2">ارسال مجدد</a>
               </form>
             </div>
           </div>

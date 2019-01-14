@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Redirect;
 use App\Birthday;
+use Jalalian;
 
 class BirthdayController extends Controller
 {
@@ -41,10 +42,15 @@ class BirthdayController extends Controller
           'name' => 'required',
           'birthday_date' => 'required',
       ]);
+        $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+        //$Jalalian = jdate($dateString)->format('date');
+
+        // get instance of \Carbon\Carbon
+        $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
         $birthday =  new Birthday;
         $birthday->user_id = 1;
         $birthday->name = $request->input('name');
-        $birthday->birthday_date = $request->input('birthday_date');
+        $birthday->birthday_date = $carbon_birth_date;
 
         $birthday->save();
         $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
@@ -86,10 +92,15 @@ class BirthdayController extends Controller
           'name' => 'required',
           'birthday_date' => 'required',
       ]);
+      $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+      //$Jalalian = jdate($dateString)->format('date');
+
+      // get instance of \Carbon\Carbon
+      $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
         $birthday = Birthday::where('id', $id)->firstOrFail();
         $birthday->user_id = 1;
         $birthday->name = $request->input('name');
-        $birthday->birthday_date = $request->input('birthday_date');
+        $birthday->birthday_date = $carbon_birth_date;
 
         $birthday->save();
         $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');

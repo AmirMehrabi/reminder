@@ -107,7 +107,7 @@
                             </fieldset>
                             <fieldset class="form-group">
                               <label for="">تاریخ تولد</label>
-                              <input type="date" name="birthday_date" class="form-control" id="" placeholder="تاریخ تولد" value="{!! \Carbon\Carbon::parse($birthday->birthday_date)->format('d/m/Y')!!}">
+                              <input type="text" name="birthday_date" class="form-control date_input" id="date_input" placeholder="تاریخ تولد" />
 
                             </fieldset>
 
