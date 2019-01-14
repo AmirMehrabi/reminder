@@ -156,3 +156,7 @@ border-radius: 100px;
 .profile-section {
   padding-top: 100px;
 }
+
+.datepicker-plot-area .datepicker-year-view, .datepicker-plot-area .datepicker-month-view, .datepicker-plot-area .datepicker-navigator .pwt-btn-switch, .datepicker-plot-area .toolbox {
+  font-family: 'Samim';
+}

@@ -7,11 +7,15 @@
     <title>متولد | @yield('title')</title>
 
     <link rel="stylesheet" href="{{URL::asset('css/fonts/fonts.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.1.3/dist/css/persian-datepicker.css">
     <link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/circle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/master.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+    <script src="{{URL::asset('js/jquery-3.3.1.slim.min.js')}}"></script>
+    <script src="https://unpkg.com/persian-date@1.0.5/dist/persian-date.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@1.1.3/dist/js/persian-datepicker.js"></script>
 
   </head>
 
@@ -92,7 +96,7 @@
 
     </footer>
 
-    <script src="{{URL::asset('js/jquery-3.3.1.slim.min.js')}}"></script>
+
     <script src="{{URL::asset('js/popper.min.js')}}" ></script>
     <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
     <script src="{{URL::asset('js/main.js')}}"></script>
