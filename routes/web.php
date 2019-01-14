@@ -21,10 +21,6 @@ Route::resource('birthday', 'BirthdayController')->names([
     'destroy' => 'birthday.destroy'
 ]);
 
-route::get('test', 'PagesController@test');
-
-route::get('sms', 'PagesController@sms');
-
 //Route::auth();
 
 Route::get('login', 'Auth\LoginController@login')->name('user.login');
