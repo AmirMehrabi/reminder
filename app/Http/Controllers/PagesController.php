@@ -31,45 +31,12 @@ class PagesController extends Controller
       return view('index', compact('birthdays', 'today_date', 'today_time'));
   }
 
-  public function sms(){
-    try{
-        $sender = "10004346";
-        $message = "تست ارسال اس ام اس از لاراول";
-        $receptor = array("09361103966");
-        $result = Kavenegar::Send($sender,$receptor,$message);
-        if($result){
-            foreach($result as $r){
-                echo "messageid = $r->messageid";
-                echo "message = $r->message";
-                echo "status = $r->status";
-                echo "statustext = $r->statustext";
-                echo "sender = $r->sender";
-                echo "receptor = $r->receptor";
-                echo "date = $r->date";
-                echo "cost = $r->cost";
-            }
-        }
-    }
-    catch(\Kavenegar\Exceptions\ApiException $e){
-        // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
-        echo $e->errorMessage();
-    }
-    catch(\Kavenegar\Exceptions\HttpException $e){
-        // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
-        echo $e->errorMessage();
-    }
-  }
+
 
   public function test()
   {
-    $today_birthdays = Birthday::whereMonth('birthday_date', '=', date('m'))->whereDay('birthday_date', '=', Carbon::tomorrow()->day)->get();
-    foreach ($today_birthdays as $birth) {
-      $sender = "10004346";
-      $message = "فراموش نکنید که فردا تولد " . $birth->name . " است.  ";
-      $receptor = $birth->user->phone;
-      $result = Kavenegar::Send($sender,$receptor,$message);
-      echo "success";
-    }
+
+
   }
 
 
