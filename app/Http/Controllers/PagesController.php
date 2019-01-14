@@ -33,11 +33,7 @@ class PagesController extends Controller
 
 
 
-  public function test()
-  {
 
-
-  }
 
 
   public function profile(){
