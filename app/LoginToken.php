@@ -28,8 +28,11 @@ class LoginToken extends Model
 
     public function send(){
 
-
-
+      $url = url('/auth/token', $this->token);
+          $sender = "10004346";
+          $message = " :کد ورود شما" . $this->token;
+          $receptor = $this->user->phone;
+          $result = Kavenegar::Send($sender,$receptor,$message);
     }
 
     public function user()

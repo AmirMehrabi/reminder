@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Birthday;
+use Carbon\Carbon;
 use Auth;
 use Kavenegar;
 
@@ -56,6 +57,18 @@ class PagesController extends Controller
     catch(\Kavenegar\Exceptions\HttpException $e){
         // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
         echo $e->errorMessage();
+    }
+  }
+
+  public function test()
+  {
+    $today_birthdays = Birthday::whereMonth('birthday_date', '=', date('m'))->whereDay('birthday_date', '=', Carbon::tomorrow()->day)->get();
+    foreach ($today_birthdays as $birth) {
+      $sender = "10004346";
+      $message = "فراموش نکنید که فردا تولد " . $birth->name . " است.  ";
+      $receptor = $birth->user->phone;
+      $result = Kavenegar::Send($sender,$receptor,$message);
+      echo "success";
     }
   }
 

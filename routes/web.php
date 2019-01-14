@@ -21,11 +21,7 @@ Route::resource('birthday', 'BirthdayController')->names([
     'destroy' => 'birthday.destroy'
 ]);
 
-route::get('test', function(){
-  $birthday = App\Birthday::firstOrFail();
-
-  dd($birthday);
-});
+route::get('test', 'PagesController@test');
 
 route::get('sms', 'PagesController@sms');
 
