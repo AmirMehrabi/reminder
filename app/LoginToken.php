@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Mail;
+use Kavenegar;
 
 class LoginToken extends Model
 {
@@ -26,13 +27,21 @@ class LoginToken extends Model
 
     public function send(){
       $url = url('/auth/token', $this->token);
-      Mail::raw(
-        "<a href='{$url}'>{$url}</a>",
-        function ($message){
-          $message->to($this->user->email)
-                  ->subject('Login to Reminder');
-        }
-      );
+      try{
+          $sender = "10004346";
+          $message = " کد ورود شما" . $this->token . " میباشد";
+          $receptor = $this->user->phone;
+          $result = Kavenegar::Send($sender,$receptor,$message);
+      }
+      catch(\Kavenegar\Exceptions\ApiException $e){
+          // در صورتی که خروجی وب سرویس 200 نباشد این خطا رخ می دهد
+          echo $e->errorMessage();
+      }
+      catch(\Kavenegar\Exceptions\HttpException $e){
+          // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+          echo $e->errorMessage();
+      }
+
     }
 
     public function user()

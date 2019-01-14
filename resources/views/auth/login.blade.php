@@ -12,14 +12,14 @@
                   {{ csrf_field() }}
 
                 <fieldset class="form-group">
-                  <label for="email">آدرس ایمیل</label>
-                  <input type="email" name="email" class="form-control" id="email" placeholder="برای مثال: amir@gmail.com">
-                  @if ($errors->has('email'))
+                  <label for="phone"> شماره تلفن همراه</label>
+                  <input type="text" name="phone" class="form-control" id="phone" placeholder="برای مثال: 09361856666">
+                  @if ($errors->has('phone'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('email') }}</strong> <br />
+                          <strong>{{ $errors->first('phone') }}</strong> <br />
                       </span>
                   @endif
-                  <small class="text-muted">ایمیل شما را با هیچکس به اشتراک نخواهیم گذاشت.</small>
+                  <small class="text-muted">شماره تلفن همراه شما را با هیچکس به اشتراک نخواهیم گذاشت.</small>
                 </fieldset>
 
                 <button type="submit" class="btn btn-primary float-left">

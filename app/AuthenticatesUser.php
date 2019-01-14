@@ -36,7 +36,7 @@ class AuthenticatesUser
   protected function validateRequest()
   {
     $this->validate($this->request, [
-      'email' => 'required|email'
+      'phone' => 'required'
     ]);
 
     return $this;
@@ -44,11 +44,11 @@ class AuthenticatesUser
 
   protected function createToken()
   {
-    $user = User::byEmail($this->request->email);
+    $user = User::byPhone($this->request->phone);
     if ($user == null) {
       $user = User::create([
           'name' => '',
-          'email' => $this->request->email,
+          'phone' => $this->request->phone,
       ]);
     }
     return LoginToken::generateFor($user);

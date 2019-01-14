@@ -27,6 +27,8 @@ route::get('test', function(){
   dd($birthday);
 });
 
+route::get('sms', 'PagesController@sms');
+
 //Route::auth();
 
 Route::get('login', 'Auth\LoginController@login');

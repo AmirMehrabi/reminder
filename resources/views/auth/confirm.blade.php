@@ -13,7 +13,7 @@
                   {{ csrf_field() }}
 
                 <fieldset class="form-group text-right">
-                  <label for="token">تا لحظاتی دیگر یک کد تائید برای شما ایمیل خواهد شد. آن را در فیلد زیر وارد کنید.</label>
+                  <label for="token">تا لحظاتی دیگر یک کد تائید برای شما اس ام اس خواهد شد. آن را در فیلد زیر وارد کنید.</label>
                   <input type="token" name="token" class="form-control" id="token" placeholder="برای مثال: 7SaPL">
                   @if ($errors->has('token'))
                       <span class="help-block">
