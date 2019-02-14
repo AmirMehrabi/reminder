@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Redirect;
 use App\Birthday;
+use App\User;
 use Jalalian;
 
 class BirthdayController extends Controller
@@ -65,7 +66,7 @@ class BirthdayController extends Controller
      */
     public function show($id)
     {
-        $birthday = Birthday::findOrFail($id);
+        $birthday = User::findOrFail($id)->birthdays();
         return $birthday;
     }
 
