@@ -49,7 +49,7 @@ class BirthdayController extends Controller
         // get instance of \Carbon\Carbon
         $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
         $birthday =  new Birthday;
-        $birthday->user_id = 1;
+        $birthday->user_id = 4;
         $birthday->name = $request->input('name');
         $birthday->birthday_date = $carbon_birth_date;
 
