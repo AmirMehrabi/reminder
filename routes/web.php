@@ -15,6 +15,9 @@ Route::get('/', 'PagesController@index')->name('home');
 Route::get('/logout', 'AuthController@logout');
 Route::get('profile', 'PagesController@profile')->name('profile');
 
+Route::post('/birthdays', 'PagesController@birthdays')->name('birthdays');
+
+
 Route::resource('birthday', 'BirthdayController')->names([
     'store' => 'birthday.store',
     'update' => 'birthday.update',

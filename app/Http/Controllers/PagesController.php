@@ -48,4 +48,9 @@ class PagesController extends Controller
       $today_time = jdate()->format('H:i');
       return view('profile', compact('birthdays', 'today_date', 'today_time'));
   }
+
+
+  public function birthdays(Request $request){
+    return $request->all();
+  }
 }
