@@ -65,7 +65,8 @@ class BirthdayController extends Controller
      */
     public function show($id)
     {
-        //
+        $birthday = Birthday::findOrFail($id);
+        return $birthday;
     }
 
     /**
