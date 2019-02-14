@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'دیگر تاریخ تولد آشنایان را فراموش مکنکن')
+@section('title', 'پروفایل کاربری')
 
 
 

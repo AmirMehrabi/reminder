@@ -39,8 +39,8 @@
                 پروفایل من
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{route('home')}}">صفحهٔ نخست</a>
                 <a class="dropdown-item" href="{{route('profile')}}">پروفایل من</a>
-                <a class="dropdown-item" href="#">تنظیمات</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{url('logout')}}">خروج</a>
               </div>

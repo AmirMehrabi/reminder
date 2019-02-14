@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'ورود')
+
 @section('body')
 <div class="container">
     <div class="row row justify-content-md-center">

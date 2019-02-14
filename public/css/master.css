@@ -97,7 +97,7 @@ input[type="color"]:focus,
 
 .profile-header {
 
-  background:linear-gradient(0deg,rgba(252, 238, 90,0.5),rgba(255, 193, 7,0.6)),url(img/bg-prof.png);
+  background:linear-gradient(90deg,rgba(252, 238, 90,0.8),rgba(252, 238, 90,0.6),rgba(252, 238, 90,0.8)),url(img/bg-prof.png);
 background-size:cover;
   padding-bottom: 60px;
   min-height: 250px;
@@ -159,4 +159,13 @@ border-radius: 100px;
 
 .datepicker-plot-area .datepicker-day-view .month-grid-box,.datepicker-plot-area .datepicker-year-view, .datepicker-plot-area .datepicker-month-view, .datepicker-plot-area .datepicker-navigator .pwt-btn-switch, .datepicker-plot-area .toolbox {
   font-family: 'Samim';
+}
+
+.bg-warning {
+  background: #FCEE5A !IMPORTANT;
+}
+
+.btn-warning {
+  background: #FCEE5A !IMPORTANT;
+  border: 0;
 }

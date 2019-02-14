@@ -29,10 +29,16 @@ class LoginToken extends Model
     public function send(){
 
       $url = url('/auth/token', $this->token);
+      Mail::raw(
+        "<a href='{$url}'>{$url}</a>",
+        function($message) {
+          $message->to('aut0run2011@gmail.com')->subject('ورود به یادآورد');
+        }
+      );
           $sender = "10004346";
           $message = " :کد ورود شما" . $this->token;
           $receptor = $this->user->phone;
-          $result = Kavenegar::Send($sender,$receptor,$message);
+          //$result = Kavenegar::Send($sender,$receptor,$message);
     }
 
     public function user()
