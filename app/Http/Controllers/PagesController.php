@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Birthday;
 use Carbon\Carbon;
+use Jalalian;
 use Auth;
 use Kavenegar;
 
@@ -23,6 +24,7 @@ class PagesController extends Controller
     foreach ($birthdays as $birthday) {
       $birthday->remaining = $birthday->countdays($birthday->birthday_date);
       $birthday->percent = round($birthday->remaining / 365 * 100) ;
+
     }
 
       $today_date = jdate()->format('%d %B %Y');
@@ -56,6 +58,7 @@ class PagesController extends Controller
     foreach ($birthdays as $birthday) {
         $birthday->remaining = $birthday->countdays($birthday->birthday_date);
         $birthday->percent = round($birthday->remaining / 365 * 100) ;
+        $birthday->birthday_date = jdate($birthday->birthday_date)->format('y/m/d');
       }
     return $birthdays;
   }
