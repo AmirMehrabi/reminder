@@ -51,7 +51,7 @@ class PagesController extends Controller
 
 
   public function birthdays(Request $request){
-    $birthdays = Birthday::where('user_id', $request->value)->get();
+    $birthdays = Birthday::where('user_id', $request->ID)->get();
 
     // foreach ($birthdays as $birthday) {
     //     $birthday->remaining = $birthday->countdays($birthday->birthday_date);
