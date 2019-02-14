@@ -66,8 +66,13 @@ class BirthdayController extends Controller
      */
     public function show($id)
     {
-        $birthday = User::findOrFail($id)->birthdays;
-        return $birthday;
+        $birthdays = Birthday::where('user_id', $id)->get();
+
+        foreach ($birthdays as $birthday) {
+            $birthday->remaining = $birthday->countdays($birthday->birthday_date);
+            $birthday->percent = round($birthday->remaining / 365 * 100) ;
+          }
+        return $birthdays;
     }
 
     /**
