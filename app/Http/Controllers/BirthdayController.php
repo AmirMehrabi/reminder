@@ -66,7 +66,7 @@ class BirthdayController extends Controller
      */
     public function show($id)
     {
-        $birthday = User::findOrFail($id)->birthdays();
+        $birthday = User::findOrFail($id)->birthdays;
         return $birthday;
     }
 
