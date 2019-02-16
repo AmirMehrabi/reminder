@@ -40,7 +40,6 @@ class BirthdayController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
       $request->validate([
           'name' => 'required',
           'birthday_date' => 'required',
@@ -53,7 +52,7 @@ class BirthdayController extends Controller
         $birthday =  new Birthday;
         $birthday->user_id = 4;
         $birthday->name = $request->input('name');
-        $birthday->birthday_date = Carbon::createFromFormat($request->birthday_date, 'Y/m/d');
+        $birthday->birthday_date = Carbon::createFromFormat($request->birthday_date, 'Y-m-d');
         $birthday->save();
         return $birthday;
         
