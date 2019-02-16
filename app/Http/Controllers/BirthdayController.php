@@ -41,10 +41,10 @@ class BirthdayController extends Controller
     public function store(Request $request)
     {
         return $request->all();
-    //   $request->validate([
-    //       'name' => 'required',
-    //       'birthday_date' => 'required',
-    //   ]);
+      $request->validate([
+          'name' => 'required',
+          'birthday_date' => 'required',
+      ]);
     //     $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
         //$Jalalian = jdate($dateString)->format('date');
 
@@ -54,9 +54,9 @@ class BirthdayController extends Controller
         $birthday->user_id = 4;
         $birthday->name = $request->input('name');
         $birthday->birthday_date = Carbon::createFromFormat($request->birthday_date, 'Y/m/d');
-
+        $birthday->save();
         return $birthday;
-        // $birthday->save();
+        
         // $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
         // return Redirect::back();
     }
