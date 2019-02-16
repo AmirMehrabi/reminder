@@ -20,6 +20,8 @@ Route::post('/birthdays', 'PagesController@birthdays')->name('birthdays');
 
 Route::post('/birthday/delete', 'BirthdayController@delete')->name('birthday.delete');
 
+Route::post('/birthday/update', 'BirthdayController@updateApi')->name('birthday.update');
+
 Route::resource('birthday', 'BirthdayController')->names([
     'store' => 'birthday.store',
     'update' => 'birthday.update',

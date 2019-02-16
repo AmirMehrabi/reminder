@@ -114,6 +114,25 @@ class BirthdayController extends Controller
         return Redirect::back();
     }
 
+
+    public function updateApi(Request $request)
+    {
+    //   $request->validate([
+    //       'name' => 'required',
+    //       'birthday_date' => 'required',
+    //   ]);
+      //$Jalalian = jdate($dateString)->format('date');
+
+      // get instance of \Carbon\Carbon
+        $birthday = Birthday::where('id', $request->birthday_id)->firstOrFail();
+        $birthday->user_id = $request->user_id;
+        $birthday->name = $request->name;
+        $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
+
+        $birthday->save();
+        return $birthday;
+    }
+
     /**
      * Remove the specified resource from storage.
      *
