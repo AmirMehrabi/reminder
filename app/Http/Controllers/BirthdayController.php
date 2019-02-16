@@ -40,21 +40,19 @@ class BirthdayController extends Controller
      */
     public function store(Request $request)
     {
-      $request->validate([
-          'name' => 'required',
-          'birthday_date' => 'required',
-      ]);
+
     //     $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
         //$Jalalian = jdate($dateString)->format('date');
 
         // get instance of \Carbon\Carbon
         // $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
-        $birthday =  new Birthday;
+//        return $request->all();
+         $birthday =  new Birthday;
         $birthday->user_id = 4;
         $birthday->name = $request->input('name');
-        $birthday->birthday_date = Carbon::createFromFormat($request->birthday_date, 'Y-m-d');
-        $birthday->save();
-        return $birthday;
+         $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
+         $birthday->save();
+         return $birthday;
         
         // $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
         // return Redirect::back();
