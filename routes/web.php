@@ -18,6 +18,8 @@ Route::get('profile', 'PagesController@profile')->name('profile');
 Route::post('/birthdays', 'PagesController@birthdays')->name('birthdays');
 
 
+Route::post('/birthday/delete', 'BirthdayController@delete')->name('birthday.delete');
+
 Route::resource('birthday', 'BirthdayController')->names([
     'store' => 'birthday.store',
     'update' => 'birthday.update',

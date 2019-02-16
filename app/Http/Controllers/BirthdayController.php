@@ -48,8 +48,8 @@ class BirthdayController extends Controller
         // $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
 //        return $request->all();
          $birthday =  new Birthday;
-        $birthday->user_id = 4;
-        $birthday->name = $request->input('name');
+         $birthday->user_id = 4;
+         $birthday->name = $request->input('name');
          $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
          $birthday->save();
          return $birthday;
@@ -125,5 +125,11 @@ class BirthdayController extends Controller
         Birthday::findOrFail($id)->delete();
         $request->session()->flash('status', 'تولد مورد نظر شما با موفقیت حذف شد');
         return Redirect::back();
+    }
+
+    public function delete(Request $request)
+    {
+        Birthday::findOrFail($request->id)->delete();
+        return 'تولد مورد نظر با موفقیت حذف شد';
     }
 }
