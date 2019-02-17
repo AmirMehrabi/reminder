@@ -117,6 +117,7 @@ class BirthdayController extends Controller
 
     public function updateApi(Request $request)
     {
+        return $request->all();
     //   $request->validate([
     //       'name' => 'required',
     //       'birthday_date' => 'required',
