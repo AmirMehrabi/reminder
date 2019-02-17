@@ -117,7 +117,7 @@ class BirthdayController extends Controller
 
     public function updateApi(Request $request)
     {
-        return $request->all();
+        // return $request->all();
     //   $request->validate([
     //       'name' => 'required',
     //       'birthday_date' => 'required',
@@ -127,7 +127,7 @@ class BirthdayController extends Controller
       // get instance of \Carbon\Carbon
         $birthday = Birthday::where('id', $request->birthday_id)->firstOrFail();
         $birthday->user_id = $request->user_id;
-        $birthday->name = $request->name;
+        $birthday->name = $request->birthday_name;
         $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
 
         $birthday->save();
