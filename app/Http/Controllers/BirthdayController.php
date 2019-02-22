@@ -50,7 +50,7 @@ class BirthdayController extends Controller
          $birthday->user_id = 4;
          $birthday->name = $request->input('name');
          $birthday->birthday_date = $carbon_birth_date;
-        //  $birthday->save();
+         $birthday->save();
          return $birthday;
         
         // $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
