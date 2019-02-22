@@ -104,11 +104,12 @@ class BirthdayController extends Controller
       // get instance of \Carbon\Carbon
       $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
         $birthday = Birthday::where('id', $id)->firstOrFail();
-        $birthday->user_id = 1;
+        // $birthday->user_id = 1;
         $birthday->name = $request->input('name');
         $birthday->birthday_date = $carbon_birth_date;
 
         $birthday->save();
+
         $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
         return Redirect::back();
     }
@@ -124,13 +125,31 @@ class BirthdayController extends Controller
       //$Jalalian = jdate($dateString)->format('date');
 
       // get instance of \Carbon\Carbon
-        $birthday = Birthday::where('id', $request->birthday_id)->firstOrFail();
-        $birthday->user_id = $request->user_id;
-        $birthday->name = $request->birthday_name;
-        $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
+        // $birthday = Birthday::where('id', $request->birthday_id)->firstOrFail();
+        // $birthday->user_id = $request->user_id;
+        // $birthday->name = $request->birthday_name;
+        // $birthday->birthday_date = Carbon::createFromFormat( 'Y-m-d', $request->birthday_date);
 
-        $birthday->save();
-        return $birthday;
+        // $birthday->save();
+        // return $birthday;
+
+        $request->validate([
+            'name' => 'required',
+            'birthday_date' => 'required',
+        ]);
+        $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+        //$Jalalian = jdate($dateString)->format('date');
+  
+        // get instance of \Carbon\Carbon
+        $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
+          $birthday = Birthday::where('id', $id)->firstOrFail();
+        //   $birthday->user_id = 4;
+          $birthday->name = $request->input('name');
+          $birthday->birthday_date = $carbon_birth_date;
+  
+          $birthday->save();
+  
+          return $birthday;
     }
 
     /**
