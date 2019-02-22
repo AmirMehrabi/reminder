@@ -43,7 +43,7 @@ class BirthdayController extends Controller
 
         $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
         // $Jalalian = jdate($dateString)->format('date');
-        return $dateString;
+        // return $dateString;
         $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
         //  return $carbon_birth_date;
          $birthday =  new Birthday;
