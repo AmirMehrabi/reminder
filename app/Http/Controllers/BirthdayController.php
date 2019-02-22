@@ -131,6 +131,8 @@ class BirthdayController extends Controller
 
         $birthday->save();
 
+        return $birthday;
+
         $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
         return Redirect::back();
     }
