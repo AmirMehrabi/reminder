@@ -41,7 +41,7 @@ class BirthdayController extends Controller
     public function store(Request $request)
     {
 
-        $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+        // $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
         // dd($dateString);
         // $Jalalian = jdate($dateString)->format('date');
         // return $dateString;
