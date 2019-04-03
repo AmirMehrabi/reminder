@@ -42,9 +42,11 @@ class BirthdayController extends Controller
     {
 
         $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+        // dd($dateString);
         // $Jalalian = jdate($dateString)->format('date');
         // return $dateString;
-        $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
+        $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $request->input('birthday_date'));
+        // dd($carbon_birth_date);
         //  return $carbon_birth_date;
          $birthday =  new Birthday;
          $birthday->user_id = 4;
@@ -54,8 +56,6 @@ class BirthdayController extends Controller
 
          return $birthday;
         
-        $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
-        return Redirect::back();
     }
 
 
