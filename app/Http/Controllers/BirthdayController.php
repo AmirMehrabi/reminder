@@ -186,7 +186,7 @@ class BirthdayController extends Controller
 
     public function delete(Request $request)
     {
-        Birthday::findOrFail($request->id)->delete();
+        Birthday::findOrFail($request->input('birthday_id'))->delete();
         return 'تولد مورد نظر با موفقیت حذف شد';
     }
 }
