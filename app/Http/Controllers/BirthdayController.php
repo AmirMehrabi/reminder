@@ -161,7 +161,7 @@ class BirthdayController extends Controller
             'birthday_date' => 'required',
         ]);
         $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $request->input('birthday_date'));
-        $birthday = Birthday::where('id', $id)->firstOrFail();
+        $birthday = Birthday::where('id', $request->input('birthday_id'))->firstOrFail();
         // $birthday->user_id = 1;
         $birthday->name = $request->input('name');
         $birthday->birthday_date = $carbon_birth_date;
