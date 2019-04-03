@@ -119,11 +119,11 @@ class BirthdayController extends Controller
           'name' => 'required',
           'birthday_date' => 'required',
       ]);
-      $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
+    //   $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($request->input('birthday_date'), true);
       //$Jalalian = jdate($dateString)->format('date');
 
       // get instance of \Carbon\Carbon
-      $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $dateString);
+      $carbon_birth_date = \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y/m/d', $request->input('birthday_date'));
         $birthday = Birthday::where('id', $id)->firstOrFail();
         // $birthday->user_id = 1;
         $birthday->name = $request->input('name');
@@ -133,8 +133,8 @@ class BirthdayController extends Controller
 
         return $birthday;
 
-        $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
-        return Redirect::back();
+        // $request->session()->flash('status', 'تولد مورد نظر، با موفقیت به پروفایل شما افزوده شد');
+        // return Redirect::back();
     }
 
 
